@@ -1,0 +1,22 @@
+label {
+    margin-top: 20px;
+}
+
+form {
+    margin-left: 25px;
+    width: 400px;
+    float: left;
+}
+
+input {
+    width: 380px;
+    height: 27px;
+}
+
+header.cab {
+    background-color: green;
+}
+
+body {
+    background-color: aliceblue;
+}
