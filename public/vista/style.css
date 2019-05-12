@@ -13,10 +13,64 @@ input {
     height: 27px;
 }
 
-header.cab {
-    background-color: green;
+.cab {}
+
+body header h2 {
+    background-color: lightgreen;
+    margin-right: 11.25%;
+    padding: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+nav {
+    position: absolute;
+    margin-left: 87.5%;
+    margin-top: -44px;
+}
+
+#imagen {
+    width: 30px;
+    height: 30px;
 }
 
 body {
     background-color: aliceblue;
+    margin: 10px;
+}
+
+ul {
+    list-style: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+}
+
+#menu li>a {
+    background-color: lightgreen;
+    color: white;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu li>a:hover {
+    color: black;
+    background-color: white;
+}
+
+#menu>li {
+    float: left;
+    text-align: center;
+}
+
+#menu>li>ul {
+    display: none;
+}
+
+#menu>li:hover>ul {
+    display: block;
 }

@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
+    header("Location: /SistemaDeGestion/public/vista/login.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,9 +21,9 @@
     <?php
     date_default_timezone_set('America/Guayaquil');
     include '../../../config/conexionBD.php';
-    $codigo = $_GET["codigo"];
-    $contraseñaActual = $_POST["contraActual"];
-    $contraseñaNueva = $_POST["contraNueva"];
+    $codigo = $_POST["codigo"];
+    $contraseñaActual = $_POST["contrasenaActual"];
+    $contraseñaNueva = $_POST["contrasenaNueva"];
     $contrasena = MD5($contraseñaNueva);
     $fechaMod = date('Y-m-d G:i:s');
 
@@ -26,7 +33,7 @@
     $resultb = $conn->query($bus);
     if ($resultb->num_rows > 0) {
         while ($row = $resultb->fetch_assoc()) {
-            $passwd=$row["usu_password"];
+            $passwd = $row["usu_password"];
         }
     }
 
@@ -42,12 +49,12 @@
             }
         }
     } else {
-        echo "Las contraseñas no coinciden";
+        echo "Las contraseña actual es incorrrecta";
     }
     //cerrar la base de datos
     $conn->close();
     ?>
-    <a href="index.php"> Regresar </a>
+     <a href="../../vista/usuario/index.php"> Regresar </a>
 </body>
 
 </html>

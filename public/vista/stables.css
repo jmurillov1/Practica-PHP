@@ -1,6 +1,7 @@
 #tbl {
     width: 100%;
     border: 1px solid;
+    float: right;
 }
 
 #col1{

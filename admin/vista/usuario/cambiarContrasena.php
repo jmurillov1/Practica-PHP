@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
+    header("Location: /SistemaDeGestion/public/vista/login.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,18 +18,19 @@
     <header class="cab">
         <h1>Cambiar Contraseña Usuario</h1>
     </header>
-    <?php
-    $codigo = $_GET["codigo"];
-    echo "<form id='" . "formulario01" . "' method='" . "POST" . "' action='cambiarContrasena2.php?codigo=$codigo'";
-    echo "<label for=" . "'usuario'" . ">Usuario</label> <input type=" . "'text'" . " id=" . "'usuario'" . " name=" . "'usuario'" . " value='" . "$_GET[nombres] $_GET[apellidos]" . "' readonly=" . "'readonly'" . "/>";
-    echo "<label for=" . "'contraActual'" . ">Contraseña Actual</label> <input type=" . "'password'" . " id=" . "'contraactual'" . " name=" . "'contraActual'" . " value='' placeholder='Ingrese su contraseña actual'/>";
-    echo "<label for=" . "'contraNueva'" . ">Contraseña Nueva</label> <input type=" . "'password'" . " id=" . "'contraNueva'" . " name=" . "'contraNueva'" . " value='' placeholder='Ingrese su contraseña nueva'/>";
-    echo "<input type=" . "'submit'" . " id=" . "'cambiar'" . " name=" . "'cambiar'" . " value=" . "'Aceptar'" . " />";
-    echo "<input type=" . "'reset'" . " id=" . "'cancelar'" . " name=" . "cancelar" . " value=" . "'Cancelar'" . " />";
-
-    echo "<a href='index.php'> Regresar  </a>";
-    echo "</form>";
-    ?>
+    <form id="formulario01" method="POST" action="../../controladores/usuario/cambiarContrasena.php">
+        <input type="hidden" id="codigo" name="codigo" value=" <?php echo $_GET["codigo"]; ?>" />
+        <label for="contrasenaActual">Contraseña Actual (*)</label>
+        <input type="password" id="contrasenaActual" name="contrasenaActual" value="" />
+        <br>
+        <label for="contrasenaNueva">Contraseña Nueva (*)</label>
+        <input type="password" id="contrasenaNueva" name="contrasenaNueva" value="" />
+        <br>
+        <br>
+        <input type="submit" id="cambiarContrasena" name="cambiarContrasena" value="Cambiar Contraseña" />
+        <input type="reset" id="cancelar " name="cancelar" value="Cancelar" />
+        <a href="../../vista/usuario/index.php"> Regresar </a>
+    </form>
 </body>
 
 </html>

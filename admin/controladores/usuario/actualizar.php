@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
+    header("Location: /SistemaDeGestion/public/vista/login.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,9 +19,10 @@
         <h1>Comprobación de Actualización</h1>
     </header>
     <?php
-    date_default_timezone_set ('America/Guayaquil');
+    date_default_timezone_set('America/Guayaquil');
     include '../../../config/conexionBD.php';
-    $codigo = $_GET["codigo"];
+
+    $codigo = $_POST["codigo"];
     $cedula = isset($_POST["cedula"]) ? trim($_POST["cedula"]) : null;
     $nombres = isset($_POST["nombres"]) ? mb_strtoupper(trim($_POST["nombres"]), 'UTF-8') : null;
     $apellidos = isset($_POST["apellidos"]) ? mb_strtoupper(trim($_POST["apellidos"]), 'UTF-8') : null;
@@ -22,8 +30,10 @@
     $telefono = isset($_POST["telefono"])  ? trim($_POST["telefono"]) : null;
     $correo =  isset($_POST["correo"]) ?  mb_strtoupper(trim($_POST["correo"])) : null;
     $fechaNacimiento = isset($_POST["fechaNacimiento"]) ? trim($_POST["fechaNacimiento"]) : null;
-    $fechaMod = date('Y-m-d G:i:s');
+    $fechaMod = date('Y-m-d H:i:s', time());
+
     $sql = "UPDATE usuario SET usu_cedula='$cedula',usu_nombres='$nombres', usu_apellidos='$apellidos', usu_direccion='$direccion', usu_telefono='$telefono', usu_correo='$correo', usu_fecha_nacimiento='$fechaNacimiento', usu_fecha_modificacion='$fechaMod' WHERE usu_codigo=$codigo;";
+
     if ($conn->query($sql) === TRUE) {
         echo "<p>Se han actualizado los datos personales correctamemte !!!</p>";
     } else {
@@ -36,7 +46,7 @@
     //cerrar la base de datos
     $conn->close();
     ?>
-    <a href="index.php"> Regresar </a>
+    <a href="../../vista/usuario/index.php"> Regresar </a>
 </body>
 
 </html>
