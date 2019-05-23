@@ -52,7 +52,7 @@ if ($usurol == 'user') {
                                 $fecha = $row["cor_fecha_hora"];
                                 $asunto = $row["cor_asunto"];
                                 $correodes = "";
-                                $bus = "SELECT * FROM usuario WHERE usu_codigo='$row[cor_usu_destinatario]';";
+                                $bus = "SELECT * FROM usuario WHERE usu_codigo=$row[cor_usu_destinatario];";
                                 $resultb = $conn->query($bus);
                                 if ($resultb->num_rows > 0) {
                                     while ($row = $resultb->fetch_assoc()) {
@@ -91,7 +91,7 @@ if ($usurol == 'user') {
                                 $fecha = $row["cor_fecha_hora"];
                                 $asunto = $row["cor_asunto"];
                                 $correodes = "";
-                                $bus = "SELECT * FROM usuario WHERE usu_codigo='$row[cor_usu_remitente]';";
+                                $bus = "SELECT * FROM usuario WHERE usu_codigo=$row[cor_usu_remitente];";
                                 $resultb = $conn->query($bus);
                                 if ($resultb->num_rows > 0) {
                                     while ($row = $resultb->fetch_assoc()) {
