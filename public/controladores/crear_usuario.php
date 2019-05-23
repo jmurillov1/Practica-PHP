@@ -23,10 +23,18 @@
     $telefono = isset($_POST["telefono"])  ? trim($_POST["telefono"]) : null;
     $correo =  isset($_POST["correo"]) ?  mb_strtoupper(trim($_POST["correo"])) : null;
     $fechaNacimiento = isset($_POST["fechaNacimiento"]) ? trim($_POST["fechaNacimiento"]) : null;
+    $fecha = date('Y-m-d', strtotime(str_replace('/', '-', $fechaNacimiento)));
     $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : null;
-    $pass=MD5($contrasena);
+    $pass = MD5($contrasena);
 
-    $sql = "INSERT INTO usuario VALUES(0, '$cedula', '$nombres', '$apellidos', '$direccion', '$telefono', '$correo', '$pass', '$fechaNacimiento', 'N', null,null);";
+    if ($_FILES["image"]["tmp_name"] != null) {
+        $foto = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+    } else {
+        $foto = addslashes(file_get_contents('../vista/images/usu.PNG'));
+    }
+
+
+    $sql = "INSERT INTO usuario VALUES(0, '$cedula', '$nombres', '$apellidos', '$direccion', '$telefono', '$correo', '$pass', '$fecha', 'N', null,null,'user','$foto');";
     if ($conn->query($sql) === TRUE) {
         echo "<p>Se ha creado los datos personales correctamemte !!!</p>";
     } else {
