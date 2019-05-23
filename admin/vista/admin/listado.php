@@ -87,6 +87,7 @@ if ($usurol == 'admin') {
                     echo " <td>" . $direccion . "</td>";
                     echo " <td>" . $telefono . "</td>";
                     echo " <td>" . $correo . "</td>";
+                    $fecha = date('d/m/Y', strtotime(str_replace('-', '/', $fecha)));
                     echo " <td>" . $fecha . "</td>";
                     echo " <td> <a href='eliminar.php?codigo=$codigo'> Ir </a> </td>";
                     echo " <td> <a href='actualizar.php?codigo=$codigo'>Ir </a> </td>";

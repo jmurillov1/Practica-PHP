@@ -33,6 +33,7 @@ if ($usurol == 'admin') {
                 $telefono = $row["usu_telefono"];
                 $correo = $row["usu_correo"];
                 $fecha = $row["usu_fecha_nacimiento"];
+                $fecha = date('d/m/Y', strtotime(str_replace('-', '/', $fecha)));
                 $contrasena = $row["usu_password"];
                 $foto = $row["usu_foto"];
             }
