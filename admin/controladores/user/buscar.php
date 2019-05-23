@@ -63,7 +63,7 @@ if ($usurol == 'user') {
                                 echo "   <td>" . $fecha . "</td>";
                                 echo "   <td>" . $correodes . "</td>";
                                 echo "   <td>" . $asunto . "</td>";
-                                echo "   <td> <a href=' eliminar . php ? codigo = $codigo '> Ir </a> </td>";
+                                echo "   <td> <a href='eliminar.php?codigo=$codigo'> Ir </a> </td>";
                                 echo "</tr>";
                             }
                         } else {
@@ -102,7 +102,7 @@ if ($usurol == 'user') {
                                 echo "   <td>" . $fecha . "</td>";
                                 echo "   <td>" . $correodes . "</td>";
                                 echo "   <td>" . $asunto . "</td>";
-                                echo "   <td> <a href=' eliminar . php ? codigo = $codigo '> Ir </a> </td>";
+                                echo "   <td> <a href='eliminar.php?codigo=$codigo'> Ir </a> </td>";
                                 echo "</tr>";
                             }
                         } else {
